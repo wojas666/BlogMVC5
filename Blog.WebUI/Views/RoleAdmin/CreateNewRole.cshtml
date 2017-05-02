@@ -1,0 +1,20 @@
+﻿@model Blog.WebUI.Models.CreateRoleViewModel
+
+@{
+    ViewBag.Title = "CreateNewRole";
+    Layout = "~/Views/_LoginLayout.cshtml";
+}
+
+<h2>CreateNewRole</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary()
+    <div class="form-group">
+        <label>Nazwa Roli:</label>
+        @Html.TextBoxFor(e=>e.RoleName, new { @class="form-control"})
+    </div>
+
+    <input type="submit" value="Dodaj" class="btn btn-primary"/>
+}
+

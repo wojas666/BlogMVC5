@@ -1,0 +1,65 @@
+﻿@using Blog.WebUI.Models
+@using Blog.Domain.Entity
+@model Blog.WebUI.Models.EditRoleViewModel
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/_LoginLayout.cshtml";
+}
+
+<h2>Edit</h2>
+
+@Html.ValidationSummary()
+@using (Html.BeginForm())
+{
+    <input type="hidden" name="roleName" value="@Model.Role.Name"/>
+    <div class="panel panel-primary">
+        <div class="panel-heading">Dodaj do @Model.Role.Name</div>
+        <table class="table table-striped">
+            @if(Model.NonMember.Count() == 0)
+            {
+                <tr><td colspan="2">Wszyscy posiadają uprawnienia.</td></tr>
+            }
+            else
+            {
+                <tr><td>Id Użytkownika</td><td>Dodaj do Roli</td></tr>
+                foreach(User user in Model.NonMember)
+                {
+                    <tr>
+                        <td>@user.UserName</td>
+                        <td>
+                            <input type="checkbox" name="UsersToAds" value="@user.Id" />
+                        </td>
+                    </tr>
+                }
+            }
+        </table>
+    </div>
+
+    <div class="panel panel-primary">
+        <div class="panel-heading">Usuń z @Model.Role.Name</div>
+        <table class="table table-striped">
+            @if(Model.Member.Count() == 0)
+            {
+                <tr><td colspan="2">Nikt nie posida uprawnień.</td></tr>
+            }
+            else
+            {
+                <tr><td>Id Użytkownika</td><td>Usuń z Roli</td></tr>
+                foreach(User user in Model.Member)
+                {
+                    <tr>
+                        <td>@user.UserName</td>
+                        <td>
+                            <input type="checkbox" name="UsersToRemoves" value="@user.Id"/>
+                        </td>
+                    </tr>
+                }
+            }
+        </table>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Zapisz</button>
+    @Html.ActionLink("Anuluj", "Index", null, new { @class="btn btn-default" })
+}
+

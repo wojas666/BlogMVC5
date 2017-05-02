@@ -1,0 +1,14 @@
+﻿@model Blog.WebUI.Models.CreateTopicViewModel
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/_Layout.cshtml";
+}
+
+@Html.BeginForm()
+<div class="panel panel-group">
+     <p>Temat: @Html.TextBoxFor(e=> e.Title, new { @class = "form-control" })</p>
+     <p>Wiadomość: @Html.TextAreaFor(e=> e.Text, new { @class = "form-control" }) </p>
+</div>
+<input class="btn btn-success" type="submit" value="Utwórz" />
+

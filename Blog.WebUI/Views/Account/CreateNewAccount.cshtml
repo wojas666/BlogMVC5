@@ -1,0 +1,47 @@
+﻿@model Blog.WebUI.Models.RegisterViewModel
+
+@{
+    ViewBag.Title = "CreateNewAccount";
+    Layout = "~/Views/_LoginLayout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-theme.css" rel="stylesheet" />
+    <title>Załóż Konto</title>
+    <style>
+        .btn a {
+            color: white;
+            text-decoration: none
+        }
+
+        body {
+            background-color: #e5e5e5
+        }
+    </style>
+</head>
+@using (Html.BeginForm())
+{
+<body>
+    <div class="panel-body">
+       
+        @foreach (var property in ViewData.ModelMetadata.Properties)
+        {
+            <div class="form-group">
+                <label>@(property.DisplayName ?? property.PropertyName)</label> 
+                @Html.TextBox(property.PropertyName, null, new { @class = "form-control" })
+            </div>
+        }
+
+        <div class="panel-footer">
+        <input type="submit" value="Rejestruj!" class="btn btn-primary" />
+        </div>
+       
+    </div>
+</body>
+}
+</html>

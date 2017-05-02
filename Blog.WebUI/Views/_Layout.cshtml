@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <title></title>
+    <style>
+        body { background-color: #eae9e9; height: 100%; width: 100%; margin: auto 10px }
+    </style>
+</head>
+
+<body>
+    <div class="navbar navbar-inverse" role="navigation">
+        <a class="navbar-brand" href="#">Prywatny blog wykonany w ASP.NET MVC5</a>
+    </div>
+    <div class="row panel">
+        <div id="categories" class="col-xs-3">
+            Brak kategorii.
+        </div>
+        <div class="col-xs-8">
+            @RenderBody()
+        </div>
+    </div>
+    <div class="panel panel-footer text-right">
+        <a class="text-right">@DateTime.Now</a>
+    </div>
+</body>
+</html>
