@@ -5,43 +5,25 @@
     Layout = "~/Views/_LoginLayout.cshtml";
 }
 
-<!DOCTYPE html>
+<meta name="viewport" content="width=device-width" />
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+<link href="~/Content/bootstrap-theme.css" rel="stylesheet" />
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <link href="~/Content/bootstrap.css" rel="stylesheet" />
-    <link href="~/Content/bootstrap-theme.css" rel="stylesheet" />
-    <title>Załóż Konto</title>
-    <style>
-        .btn a {
-            color: white;
-            text-decoration: none
-        }
-
-        body {
-            background-color: #e5e5e5
-        }
-    </style>
-</head>
 @using (Html.BeginForm())
 {
-<body>
-    <div class="panel-body">
-       
-        @foreach (var property in ViewData.ModelMetadata.Properties)
-        {
-            <div class="form-group">
-                <label>@(property.DisplayName ?? property.PropertyName)</label> 
-                @Html.TextBox(property.PropertyName, null, new { @class = "form-control" })
-            </div>
-        }
+    <div class="panel panel-primary">
+       <div class="panel-heading">Załóż Konto</div>
+
+        <p>Nazwa Użytkownika: @Html.TextBoxFor(e=>e.Login, new { @class = "form-control" })</p>
+        <p>Hasło: @Html.PasswordFor(e=>e.Password, new { @class = "form-control" })</p>
+        <p>Adres E-Mail: @Html.TextBoxFor(e=>e.EMail, new { @class = "form-control" })</p>
+        <p>Imię: @Html.TextBoxFor(e=>e.FirstName, new { @class ="form-control" })</p>
+        <p>Nazwisko: @Html.TextBoxFor(e=>e.LastName, new { @class = "form-control"})</p>
+        <p>Wiek: @Html.TextBoxFor(e=>e.Age, new { @class = "form-control" })</p>
 
         <div class="panel-footer">
         <input type="submit" value="Rejestruj!" class="btn btn-primary" />
         </div>
        
     </div>
-</body>
 }
-</html>

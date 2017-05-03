@@ -1,0 +1,13 @@
+﻿@model IEnumerable<Blog.WebUI.Models.NavigationItem>
+
+@{
+    Layout = null;
+}
+
+@if (Model != null)
+{
+    foreach (var item in Model)
+    {
+        <a class="btn btn-block btn-default btn-lg" href="@item.LinkAddress">@item.LinkName</a> 
+    }
+}

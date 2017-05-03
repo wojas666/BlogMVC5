@@ -17,8 +17,6 @@ namespace Blog.WebUI.Controllers
     /// </summary>
     public class AccessController : Controller
     {
-        
-
         public AccessController()
         {
            
@@ -43,7 +41,7 @@ namespace Blog.WebUI.Controllers
                 var ident = userManager.CreateIdentity(user, DefaultAuthenticationTypes.ApplicationCookie);
                 authManager.SignIn(new Microsoft.Owin.Security.AuthenticationProperties { IsPersistent = false }, ident);
 
-                return Redirect(returnUrl ?? Url.Action("Index", "Test"));
+                return Redirect(returnUrl ?? Url.Action("Index", "UserBlog", new { userID = user.Id } ));
             }
             else
             {

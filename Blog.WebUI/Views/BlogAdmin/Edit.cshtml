@@ -1,0 +1,17 @@
+﻿@model Blog.WebUI.Models.EditTopicViewModel
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/_Layout.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    <div class="panel panel-primary">
+        <div class="panel-heading">Edycja Tematu</div>
+        <p>Temat: @Html.TextBoxFor(e => e.Title, Model.Title, new { @class = "form-control" })</p>
+        <p>Text: @Html.TextAreaFor(e => e.Text, new { @class = "form-control" })</p>
+    </div>
+    
+    <input class="btn btn-success" type="submit" value="Zapisz" />
+}

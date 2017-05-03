@@ -29,10 +29,14 @@ namespace Blog.WebUI.Controllers
 
             using (EFDbContext db = new EFDbContext())
             {
-                categoryID = db.Categories.Where(e => e.Name.Equals("HomePage")).Select(e => e.CategoryID).FirstOrDefault();
+                categoryID = db.Categories
+                    .Where(e => e.Name.Equals("HomePage"))
+                    .Select(e => e.CategoryID).FirstOrDefault();
             }
 
-            var topicToView = topics.TopicsRepository.Where(e => e.CategoryID == categoryID).OrderByDescending(e => e.AddedDate).ToList();
+            var topicToView = topics.TopicsRepository
+                .Where(e => e.CategoryID == categoryID)
+                .OrderByDescending(e => e.AddedDate).ToList();
 
             return View(topicToView);
         }

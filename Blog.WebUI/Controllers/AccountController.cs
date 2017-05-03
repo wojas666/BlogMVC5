@@ -36,7 +36,8 @@ namespace Blog.WebUI.Controllers
             if (ModelState.IsValid)
             {
                 var userManager = HttpContext.GetOwinContext().GetUserManager<AppUserManager>();
-                
+                var roleManager = HttpContext.GetOwinContext().GetUserManager<RoleManager<AppRole>>();
+
                 User user = new Domain.Entity.User()
                 {
                     UserName = model.Login,
@@ -46,12 +47,11 @@ namespace Blog.WebUI.Controllers
                         FirstName = model.FirstName,
                         LastName = model.LastName,
                         Age = model.Age,
-                        Gender = model.Gender
                     }
                 };
-
                 
                 IdentityResult result = userManager.Create(user, model.Password);
+                userManager.AddToRole(userManager.FindByName(user.UserName).Id, "User");
 
                 if (result.Succeeded)
                     return Redirect(returnUrl ?? Url.Action("SignIn", "Access"));

@@ -1,0 +1,28 @@
+﻿@using Blog.Domain.Entity
+@model IEnumerable<Topic>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/_Layout.cshtml";
+}
+
+<meta name="viewport" content="width=device-width" />
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+<link href="~/Content/bootstrap-theme.css" rel="stylesheet" />
+<style>
+    .panel-primary {
+        background-color: #c6c6c6
+    }
+</style>
+
+@foreach (var Topic in Model)
+{
+    <div class="panel panel-primary">
+        <h3>@Topic.Title</h3>
+        <h4>@Topic.Text</h4>
+        <h4>@Topic.AddedDate</h4>
+    </div>
+}
+
+<h2>Index</h2>
+
